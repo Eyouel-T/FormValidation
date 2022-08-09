@@ -1,0 +1,23 @@
+.main{
+    max-width: 60%;
+    background-color: brown;
+    text-align: center;
+    margin: auto;
+    padding: 10%;
+}
+
+.body{
+    text-align: center;
+    margin: auto;
+}
+button{
+    background-color: aqua;
+    border: none;
+    margin: 1%;
+    z-index: 1px;
+
+}
+input{
+    width: 200px;
+    height: 20px;
+}

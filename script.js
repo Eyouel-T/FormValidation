@@ -1,9 +1,13 @@
+document.querySelector("#password").setAttribute("type", "password");
+document.querySelector("#confirmpass").setAttribute("type", "password");
 document.querySelector("#submit").onclick = function(){
     var email = document.querySelector("#email").value;
-    emailValidation(email);
     var password = document.querySelector("#password").value;
     var confirmPass = document.querySelector("#confirmpass").value;
-    checkPass(password, confirmPass);
+    if (emailValidation(email) && checkPass(password, confirmPass)){
+        alert("your form is received thank you")
+        }
+    
 }
 function emailValidation(email){
     var atPresent = false;
@@ -24,17 +28,37 @@ function emailValidation(email){
         } 
     }
     if(atPresent&&comPresent&&dotPresent){
+        document.getElementById("email").setAttribute("style", "");
         return true
     }
+    else if (!atPresent){
+        document.querySelector("#warning").innerHTML = `please include an @ in your email address`;
+        document.getElementById("email").setAttribute("style", "border: 1px solid red;");
+        return 
+    }
+    else if (!dotPresent){
+        document.querySelector("#warning").innerHTML = `please include an . in your email address`;
+        document.getElementById("email").setAttribute("style", "border: 1px solid red;");
+        return 
+    }
+    else if (!comPresent){
+        document.querySelector("#warning").innerHTML = `please include an com in your email address`;
+        document.getElementById("email").setAttribute("style", "border: 1px solid red;");
+        return 
+    }
+    
 }
 function checkPass(password, confirmPass){
     for(Element in password){
         if((password[Element])==confirmPass[Element]){
-            
+            document.getElementById("email").setAttribute("style", "");
         }
         else{
-            console.log("the passwords arent the same bro");
-            return false
+            document.querySelector("#warning").innerHTML = `check your password confirmation`
+            document.getElementById("password").setAttribute("style", "border: 1px solid red;");
+            document.getElementById("confirmpass").setAttribute("style", "border: 1px solid red;");
+            
+            return
         }
     }
     return true
